@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotOmegle", "dotOmegle\dotOmegle.csproj", "{F6404F19-593C-4AAC-8ABF-FD0FB6D975A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmegleSharp", "OmegleSharp\OmegleSharp.csproj", "{626F6DCF-9226-40FE-BDE4-04847E42FA1E}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -17,6 +19,10 @@ Global
 		{F6404F19-593C-4AAC-8ABF-FD0FB6D975A4}.Debug|x86.Build.0 = Debug|x86
 		{F6404F19-593C-4AAC-8ABF-FD0FB6D975A4}.Release|x86.ActiveCfg = Release|x86
 		{F6404F19-593C-4AAC-8ABF-FD0FB6D975A4}.Release|x86.Build.0 = Release|x86
+		{626F6DCF-9226-40FE-BDE4-04847E42FA1E}.Debug|x86.ActiveCfg = Debug|x86
+		{626F6DCF-9226-40FE-BDE4-04847E42FA1E}.Debug|x86.Build.0 = Debug|x86
+		{626F6DCF-9226-40FE-BDE4-04847E42FA1E}.Release|x86.ActiveCfg = Release|x86
+		{626F6DCF-9226-40FE-BDE4-04847E42FA1E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
