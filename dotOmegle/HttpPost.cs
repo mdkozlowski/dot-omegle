@@ -135,11 +135,18 @@ namespace dotOmegle
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = postData.Length;
-                using (Stream writeStream = request.GetRequestStream())
+                try
                 {
-                    UTF8Encoding encoding = new UTF8Encoding();
-                    byte[] bytes = encoding.GetBytes(postData);
-                    writeStream.Write(bytes, 0, bytes.Length);
+                    using (Stream writeStream = request.GetRequestStream())
+                    {
+                        UTF8Encoding encoding = new UTF8Encoding();
+                        byte[] bytes = encoding.GetBytes(postData);
+                        writeStream.Write(bytes, 0, bytes.Length);
+                    }
+                }
+                catch
+                {
+                    return "";
                 }
             }
             else

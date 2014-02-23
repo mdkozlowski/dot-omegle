@@ -37,8 +37,10 @@ namespace dotOmegle
     {
         public string[] serverList = new string[]
         {
-            "bajor","quarks" //finish serverList implementation
+            "bajor", "quarks", "promenade", "ode-bucket", "chatserv", "cardassia", "front1", "front2", "front3", "front2", "front2", "front2", "front2", "front2", "front2", "front2"
         };
+
+        public List<string> Interests = new List<string>();
 
         protected Timer updateTimer;
 
@@ -96,6 +98,11 @@ namespace dotOmegle
         /// Raised when the application is still looking for a partner to connect to.
         /// </summary>
         public event EventHandler WaitingForPartner;
+
+        /// <summary>
+        /// Raised when Omegle returns a set of interest tags the stranger has in common with you.
+        /// </summary>
+        public event SharedInterestsFoundEvent SharedInterstsFound;
 
         /// <summary>
         /// The applications stranger Id.
@@ -223,8 +230,7 @@ namespace dotOmegle
         public void GetID()
         {
             PostSubmitter sendPost = new PostSubmitter();
-            sendPost.Url = String.Format("http://{0}.omegle.com/start", Server);
-            sendPost.PostItems.Add("rcs", "1");
+            sendPost.Url = String.Format("http://{0}.omegle.com/start?rcs=1&{1}", Server, this.Interests.Count > 0 ? "topics=" +  GetTopicPostString() : ""); // Adding topics outside of the URL doesn't work
             sendPost.Type = PostSubmitter.PostTypeEnum.Post;
 
             if (!Throws)
@@ -233,6 +239,21 @@ namespace dotOmegle
             Id = sendPost.Post();
             Id = Id.TrimStart('"'); //gets rid of " at the start and end
             Id = Id.TrimEnd('"');
+        }
+
+        private string GetTopicPostString()
+        {
+            int numTopics = this.Interests.Count;
+            var sbTopics = new StringBuilder();
+            for (int i = 0; i < numTopics; i++)
+            {
+                sbTopics.AppendFormat("\"{0}\"", this.Interests[i]);
+                if (i < numTopics - 1)
+                {
+                    sbTopics.Append(",");
+                }
+            }
+            return "[" + sbTopics.ToString() + "]";
         }
 
         /// <summary>
@@ -371,7 +392,16 @@ namespace dotOmegle
         /// <param name="response">The response.</param>
         private void Parse(string response)
         {
-            JArray events = JsonConvert.DeserializeObject<JArray>(response);
+            if (response == null) return;
+            JArray events;
+            try
+            {
+                events = JsonConvert.DeserializeObject<JArray>(response);
+            }
+            catch
+            {
+                return;
+            }
 
             if (events != null)
             {
@@ -422,6 +452,10 @@ namespace dotOmegle
                         case "recaptchaRejected":
                             if (this.CaptchaRefused != null)
                                 this.CaptchaRefused(this, new EventArgs());
+                            break;
+                        case "commonLikes":
+                            if (this.SharedInterstsFound != null)
+                                this.SharedInterstsFound(this, new SharedInterestEventArgs(ev[1].Select<JToken, string>((t) => t.ToString()).ToArray()));
                             break;
                         case "suggestSpyee":
                         case "error": // should probably handle this one
