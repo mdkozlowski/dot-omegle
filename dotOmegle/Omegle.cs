@@ -102,7 +102,7 @@ namespace dotOmegle
         /// <summary>
         /// Raised when Omegle returns a set of interest tags the stranger has in common with you.
         /// </summary>
-        public event SharedInterestsFoundEvent SharedInterstsFound;
+        public event SharedInterestsFoundEvent SharedInterestsFound;
 
         /// <summary>
         /// The applications stranger Id.
@@ -454,8 +454,8 @@ namespace dotOmegle
                                 this.CaptchaRefused(this, new EventArgs());
                             break;
                         case "commonLikes":
-                            if (this.SharedInterstsFound != null)
-                                this.SharedInterstsFound(this, new SharedInterestEventArgs(ev[1].Select<JToken, string>((t) => t.ToString()).ToArray()));
+                            if (this.SharedInterestsFound != null)
+                                this.SharedInterestsFound(this, new SharedInterestEventArgs(ev[1].Select<JToken, string>((t) => t.ToString()).ToArray()));
                             break;
                         case "suggestSpyee":
                         case "error": // should probably handle this one
