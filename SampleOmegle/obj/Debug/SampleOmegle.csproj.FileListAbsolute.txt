@@ -1,0 +1,9 @@
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\bin\Debug\SampleOmegle.exe.config
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\obj\Debug\SampleOmegle.csprojResolveAssemblyReference.cache
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\bin\Debug\SampleOmegle.exe
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\bin\Debug\SampleOmegle.pdb
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\bin\Debug\dotOmegle.dll
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\bin\Debug\dotOmegle.pdb
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\obj\Debug\SampleOmegle.exe
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\SampleOmegle\obj\Debug\SampleOmegle.pdb

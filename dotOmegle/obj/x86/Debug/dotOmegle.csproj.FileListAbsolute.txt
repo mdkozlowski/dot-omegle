@@ -1,0 +1,7 @@
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\dotOmegle\obj\x86\Debug\dotOmegle.csprojResolveAssemblyReference.cache
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\dotOmegle\bin\Debug\dotOmegle.dll.config
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\dotOmegle\bin\Debug\dotOmegle.dll
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\dotOmegle\bin\Debug\dotOmegle.pdb
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\dotOmegle\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\dotOmegle\obj\x86\Debug\dotOmegle.dll
+C:\Users\Brandon\Documents\Visual Studio 2013\Projects\dot-omegle\dotOmegle\obj\x86\Debug\dotOmegle.pdb

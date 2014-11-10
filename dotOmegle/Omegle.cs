@@ -35,10 +35,21 @@ namespace dotOmegle
     /// </summary>
     public class Omegle
     {
-        public string[] serverList = new string[]
-        {
-            "bajor", "quarks", "promenade", "ode-bucket", "chatserv", "cardassia", "front1", "front2", "front3", "front2", "front2", "front2", "front2", "front2", "front2", "front2"
-        };
+        /// <summary>
+        /// Array of servers currently online on the Omegle service. Discussions are NSFW.
+        /// </summary>
+        /// <value>
+        /// Sub-domains of each server.
+        /// </value>
+        public string[] serverList;
+
+        /// <summary>
+        /// Array of servers currently online on the Omegle service. 
+        /// </summary>
+        /// <value>
+        /// Sub-domains of each server.
+        /// </value>
+        public string[] antiNudeServerList;
 
         public List<string> Interests = new List<string>();
 
@@ -167,6 +178,7 @@ namespace dotOmegle
         /// </summary>
         public Omegle()
         {
+            GetServers();
             Id = null;
             checkInterval = 1000;
             updateTimer = new Timer(TimerCallBack);
@@ -239,6 +251,30 @@ namespace dotOmegle
             Id = sendPost.Post();
             Id = Id.TrimStart('"'); //gets rid of " at the start and end
             Id = Id.TrimEnd('"');
+        }
+
+        /// <summary>
+        /// Gets the servers that are currently online.
+        /// </summary>
+        private void GetServers()
+        {
+            PostSubmitter sendPost = new PostSubmitter();
+            sendPost.Url = String.Format("http://omegle.com/status");
+            sendPost.Type = PostSubmitter.PostTypeEnum.Get;
+
+            var strStatus = sendPost.Post();
+            var dictStatus = JsonConvert.DeserializeObject<dynamic>(strStatus);
+            var listServers = new List<String>();
+            var listAntiNudeServers = new List<String>();
+
+            foreach (String server in dictStatus.servers)
+                listServers.Add(server.Split('.')[0]);
+
+            foreach (String server in dictStatus.antinudeservers)
+                listAntiNudeServers.Add(server.Split('.')[0]);
+
+            serverList = listServers.ToArray<String>();
+            antiNudeServerList = listAntiNudeServers.ToArray<String>();
         }
 
         private string GetTopicPostString()
@@ -321,6 +357,8 @@ namespace dotOmegle
             sendPost.Url = String.Format("http://{0}.omegle.com/typing", Server);
             sendPost.PostItems.Add("id", Id);
             sendPost.Type = PostSubmitter.PostTypeEnum.Post;
+            
+
 
             if (!Throws)
                 sendPost.WebExceptionEvent += WebException;
