@@ -301,7 +301,7 @@ namespace dotOmegle
         /// </returns>
         public string SendMessage(string message)
         {
-            message = HttpUtility.UrlEncode(message); //URL encode it first
+            //message = HttpUtility.UrlEncode(message); //URL encode it first
 
             return SendMessageRaw(message);
         }
@@ -393,7 +393,7 @@ namespace dotOmegle
             //This method could potentially be used to send messages from another user.
             //One would have to acquire said users Id first.
             //TODO: Find a way to get a strangers Id
-            message = HttpUtility.UrlEncode(message);
+            //message = HttpUtility.UrlEncode(message);
 
             PostSubmitter sendPost = new PostSubmitter();
             sendPost.Url = String.Format("http://{0}.omegle.com/send", Server);
