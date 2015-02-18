@@ -201,7 +201,7 @@ namespace dotOmegle
 
             baseRequest.Append(key);
             baseRequest.Append("=");
-            baseRequest.Append(HttpUtility.UrlEncode(dataItem));
+            baseRequest.Append(Uri.EscapeDataString(dataItem));
         }
     }
 }
