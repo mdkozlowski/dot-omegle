@@ -23,7 +23,7 @@ namespace SampleOmegle
             OmegleObj.WaitingForPartner += new EventHandler(omegle_WaitingForPartner);
 
             OmegleObj.Connect();
-
+            
             Console.ReadLine();
         }
 
